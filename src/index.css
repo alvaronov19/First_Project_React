@@ -1,0 +1,70 @@
+/* 1. DEFINICIÓN DE VARIABLES (Tu paleta de colores de Figma) */
+:root {
+  --azul-cine: #0B2767;      
+  --amarillo-cine: #FDC21C; 
+  --blanco: #FFFFFF;         
+  --gris: #666666;           
+  --fondo-app: #f0f2f5;     
+}
+
+/* 2. RESET Y ESTILOS BASE */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--fondo-app);
+  color: #333;
+  min-height: 100vh;
+
+  display: block; 
+}
+
+/* 3. TIPOGRAFÍA (Títulos con Montserrat) */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--azul-cine); 
+  margin-top: 0;
+}
+
+/* 4. ESTILOS GLOBALES DE BOTONES */
+button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; 
+  border-radius: 8px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilo base para las tarjetas (Movies y Alimentos) */
+.card {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px); 
+}
