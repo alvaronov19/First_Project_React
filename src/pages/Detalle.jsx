@@ -1,22 +1,27 @@
 import { useState } from 'react';
-
+import { useParams } from 'react-router-dom';
 function Detalle(){
- 
+  // Extraemos el :id dinámico de la URL
+  const { id } = useParams();
+
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState(1);
   const [mensajeCompra, setMensajeCompra] = useState('');
 
-
   const manejarCompra = (e) => {
     e.preventDefault(); 
-    setMensajeCompra(`¡Éxito, ${nombre}! Has comprado ${cantidad} boleto(s). Te enviamos los detalles a tu correo.`);
+    // Usamos el ID de la película en el mensaje
+    setMensajeCompra(`¡Éxito, ${nombre}! Has comprado ${cantidad} boleto(s) para la película #${id}. Te enviamos los detalles a tu correo.`);
     setNombre('');
     setCantidad(1);
   };
 
   return (
     <main style={{ maxWidth: '600px', margin: '40px auto', padding: '24px', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-      <h2 style={{ borderBottom: '3px solid var(--amarillo-cine)', paddingBottom: '10px' }}>Comprar Boletos</h2>
+      {/* Mostramos el ID de la película dinámicamente en el título */}
+      <h2 style={{ borderBottom: '3px solid var(--amarillo-cine)', paddingBottom: '10px' }}>
+        Comprar Boletos (Película: {id})
+      </h2>
       
       {mensajeCompra && (
         <div style={{ backgroundColor: '#d4edda', color: '#155724', padding: '16px', borderRadius: '8px', marginBottom: '20px' }}>
@@ -51,7 +56,7 @@ function Detalle(){
           />
         </div>
 
-        <button type="submit" style={{ backgroundColor: 'var(--azul-cine)', color: 'white', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
+        <button type="submit" style={{ backgroundColor: 'var(--azul-cine)', color: 'white', padding: '12px', fontSize: '16px', marginTop: '10px', cursor: 'pointer' }}>
           Confirmar Compra
         </button>
       </form>

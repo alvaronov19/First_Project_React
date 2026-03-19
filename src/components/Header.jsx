@@ -1,16 +1,17 @@
-
+import { NavLink } from 'react-router-dom'; // Importamos NavLink
 import cinepolisLogo from '../assets/logo-cinepolis.png'
 
-function Header({ cambiarVista }) {
+function Header() {
   
-
-  const linkStyle = {
-    cursor: 'pointer',
-    color: 'var(--blanco)',      
+  // Función para saber si estamos en la página actual y pintarla de amarillo
+  const linkStyle = ({ isActive }) => ({
+    textDecoration: 'none',
+    color: isActive ? 'var(--amarillo-cine)' : 'var(--blanco)',      
     fontWeight: 'bold',          
     fontSize: '16px',
-    transition: 'color 0.3s'
-  };
+    transition: 'color 0.3s',
+    borderBottom: isActive ? '2px solid var(--amarillo-cine)' : 'none'
+  });
 
   return (
     <header
@@ -33,26 +34,18 @@ function Header({ cambiarVista }) {
           alt="Logo Cinepolis" 
           style={{ height: '40px', width: 'auto' }} 
         />
-        <h1 style={{ 
-            margin: 0, 
-            fontSize: '24px', 
-            color: 'var(--amarillo-cine)' 
-          }}>
+        <h1 style={{ margin: 0, fontSize: '24px', color: 'var(--amarillo-cine)' }}>
             Cinépolis
         </h1>
       </div>
 
-      {/* ZONA DERECHA: Navegación */}
+      {/* ZONA DERECHA: Navegación con NavLink */}
       <nav style={{ display: 'flex', gap: '24px' }}>
-        <span style={linkStyle} onClick={() => cambiarVista('home')}>
-          Cartelera
-        </span>
-        <span style={linkStyle} onClick={() => cambiarVista('alimentos')}>
-          Alimentos
-        </span>
-        <span style={linkStyle} onClick={() => cambiarVista('otros')}>
-          Otros
-        </span>
+        <NavLink to="/" style={linkStyle}>Inicio</NavLink>
+        <NavLink to="/cartelera" style={linkStyle}>Cartelera</NavLink>
+        <NavLink to="/alimentos" style={linkStyle}>Alimentos</NavLink>
+        <NavLink to="/otros" style={linkStyle}>Otros</NavLink>
+        <NavLink to="/sucursales" style={linkStyle}>Sucursales</NavLink>
       </nav>
 
     </header>
