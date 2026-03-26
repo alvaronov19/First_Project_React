@@ -5,13 +5,12 @@ function Otros() {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
-      .then(respuesta => respuesta.json())
-      .then(datos => {
-        setNoticias(datos);
-        setCargando(false);
-      })
-      .catch(error => console.error("Error al cargar las noticias:", error));
+    const cargarDatos = async () => {
+      const datos = await obtenerNoticias();
+      setNoticias(datos);
+      setCargando(false);
+    };
+    cargarDatos();
   }, []);
 
   return (
